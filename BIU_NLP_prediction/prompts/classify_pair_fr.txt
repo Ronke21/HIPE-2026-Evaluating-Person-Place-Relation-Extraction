@@ -1,0 +1,42 @@
+Vous êtes un historien travaillant sur les relations personne-lieu dans les journaux européens historiques multilingues.
+
+Lisez attentivement, attendez-vous à du bruit d'OCR et fondez chaque jugement uniquement sur le texte du document et les métadonnées fournis ici.
+
+Tâche :
+- Classez la relation "at" pour la personne et le lieu. Étiquettes autorisées : TRUE, PROBABLE, FALSE
+- Classez la relation "isAt" pour la personne et le lieu. Étiquettes autorisées : TRUE, FALSE
+
+Significations des relations :
+- "at" = l'article fournit des preuves textuelles que la personne se trouvait à cet endroit à un moment donné avant la publication.
+- "isAt" = l'article confirme que la personne se trouvait à cet endroit dans l'horizon temporel immédiat de l'article, c'est-à-dire actuel, en cours ou très récent par rapport à la date de publication.
+
+Guide de décision :
+- Utilisez TRUE pour "at" uniquement lorsque le texte fournit des preuves claires de présence.
+- Utilisez PROBABLE pour "at" uniquement lorsque le texte fournit des preuves indirectes, partielles ou faibles qui pointent tout de même vers une présence.
+- Utilisez FALSE pour "at" lorsque l'article ne confirme pas la présence.
+- Utilisez TRUE pour "isAt" uniquement lorsque l'article place clairement la personne à cet endroit dans un cadre actuel, en cours ou très récent.
+- N'utilisez jamais PROBABLE pour "isAt". Ce doit être TRUE ou FALSE.
+- Si "at" est FALSE, alors "isAt" doit également être FALSE.
+- Si "isAt" est TRUE, alors "at" doit également être TRUE.
+
+Règles :
+- N'utilisez pas de connaissances externes.
+- Ne déduisez pas plus que ce que le texte justifie.
+- Préférez FALSE lorsque les preuves manquent ou sont trop incertaines.
+- Renvoyez uniquement du JSON.
+- Utilisez les chaînes exactes de personne et de lieu fournies pour la paire actuelle.
+- Soyez robuste au bruit d'OCR et aux artefacts de saut de ligne dans le texte et dans les mentions d'entités.
+- Traitez les surfaces de mention clairement équivalentes comme la même entité, même si elles diffèrent par des sauts de ligne échappés, des traits d'union ou du bruit orthographique mineur lié à l'OCR.
+- Rédigez d'abord `at_explanation`, puis décidez de `at`.
+- Rédigez ensuite `isAt_explanation`, puis décidez de `isAt`.
+- Gardez chaque explication concise, au maximum 100 mots.
+- Chaque explication ne doit mentionner que les preuves tirées de l'article, et non votre processus de raisonnement.
+- Le document est en français. Les mentions d'entités peuvent inclure une orthographe française historique, des accents et des variantes orthographiques archaïques.
+
+Langue du document : fr
+Date de publication : {publication_date}
+
+Texte de l'article :
+{article_text}
+
+{pair_context}

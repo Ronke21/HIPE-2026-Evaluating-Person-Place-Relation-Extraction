@@ -1,0 +1,13 @@
+2026-05-06 09:10:55 INFO Log file: /home/nlp/ronke21/HIPE_CLEF_2026/BIU_NLP_prediction/results/run_20260506_091055.log
+2026-05-06 09:10:55 INFO Prompt [de]: /home/nlp/ronke21/HIPE_CLEF_2026/BIU_NLP_prediction/prompts/classify_pair_de.txt
+2026-05-06 09:10:55 INFO Prompt [en]: /home/nlp/ronke21/HIPE_CLEF_2026/BIU_NLP_prediction/prompts/classify_pair_en.txt
+2026-05-06 09:10:55 INFO Prompt [fr]: /home/nlp/ronke21/HIPE_CLEF_2026/BIU_NLP_prediction/prompts/classify_pair_fr.txt
+2026-05-06 09:10:55 INFO Models       : ['nemotron', 'gptoss', 'minimax', 'gemma', 'glm']
+2026-05-06 09:10:55 INFO Mode         : eval
+2026-05-06 09:10:55 INFO Prompt langs : ['en', 'native']
+2026-05-06 09:10:55 INFO Shots        : [0, 3]
+2026-05-06 09:10:55 INFO Max pairs    : 10
+2026-05-06 09:10:55 INFO Output       : /home/nlp/ronke21/HIPE_CLEF_2026/BIU_NLP_prediction/results
+2026-05-06 09:10:55 INFO Total eval cells: 60
+2026-05-06 09:10:56 INFO === EVAL  model=nemotron  prompt_langs=['en', 'native']  shots=[0, 3] ===
+2026-05-06 09:10:56 INFO dev-de  prompt=en  shots=0  model=nvidia/nemotron-3-super-120b-a12b:free

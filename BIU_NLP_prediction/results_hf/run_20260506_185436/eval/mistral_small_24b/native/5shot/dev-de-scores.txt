@@ -1,0 +1,6 @@
+
+Evaluation Results for dev-de.jsonl:
+  'at': macro_recall=0.5280, accuracy=0.5463 (236/432)
+  'isAt': macro_recall=0.5909, accuracy=0.8935 (386/432)
+  'global': macro_recall=0.5595 (622/864)
+

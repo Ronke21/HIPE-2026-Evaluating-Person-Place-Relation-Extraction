@@ -1,0 +1,29 @@
+2026-05-06 12:43:16 INFO Log file: results/smoke3/run_20260506_124316.log
+2026-05-06 12:43:16 INFO Prompt [de]: /home/nlp/ronke21/HIPE CLEF 2026 - Multilingual Relation Extraction/BIU_NLP_prediction/prompts/classify_pair_de.txt
+2026-05-06 12:43:16 INFO Prompt [en]: /home/nlp/ronke21/HIPE CLEF 2026 - Multilingual Relation Extraction/BIU_NLP_prediction/prompts/classify_pair_en.txt
+2026-05-06 12:43:16 INFO Prompt [fr]: /home/nlp/ronke21/HIPE CLEF 2026 - Multilingual Relation Extraction/BIU_NLP_prediction/prompts/classify_pair_fr.txt
+2026-05-06 12:43:16 INFO Models       : ['glm']
+2026-05-06 12:43:16 INFO Mode         : eval
+2026-05-06 12:43:16 INFO Prompt langs : ['en']
+2026-05-06 12:43:16 INFO Shots        : [0]
+2026-05-06 12:43:16 INFO Max pairs    : 5
+2026-05-06 12:43:16 INFO Output       : results/smoke3
+2026-05-06 12:43:16 INFO Total eval cells: 3
+2026-05-06 12:43:17 INFO === EVAL  model=glm  prompt_langs=['en']  shots=[0] ===
+2026-05-06 12:43:17 INFO RUN: dev-de  prompt=en  shots=0  model=z-ai/glm-4.5-air:free
+2026-05-06 12:43:20 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:43:20 INFO Retrying request to /chat/completions in 0.413608 seconds
+2026-05-06 12:43:24 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:43:24 INFO Retrying request to /chat/completions in 0.889951 seconds
+2026-05-06 12:43:33 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-06 12:43:56 WARNING Response truncated (finish_reason=length) — raise --max-tokens
+2026-05-06 12:44:00 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:44:00 INFO Retrying request to /chat/completions in 0.388279 seconds
+2026-05-06 12:44:11 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-06 12:44:48 WARNING Response truncated (finish_reason=length) — raise --max-tokens
+2026-05-06 12:45:01 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-06 12:45:45 WARNING Response truncated (finish_reason=length) — raise --max-tokens
+2026-05-06 12:45:57 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-06 12:46:48 WARNING Response truncated (finish_reason=length) — raise --max-tokens
+2026-05-06 12:47:02 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-06 12:47:56 WARNING Response truncated (finish_reason=length) — raise --max-tokens

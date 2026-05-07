@@ -1,0 +1,66 @@
+
+================================================================
+prompt=en  shots=0
+================================================================
+
+Evaluation Results for dev-fr.jsonl:
+  'at': macro_recall=0.4591, accuracy=0.3438 (515/1498)
+  'isAt': macro_recall=0.7775, accuracy=0.8411 (1260/1498)
+  'global': macro_recall=0.6183 (1775/2996)
+
+
+
+================================================================
+prompt=en  shots=3
+================================================================
+
+Evaluation Results for dev-fr.jsonl:
+  'at': macro_recall=0.3407, accuracy=0.6088 (912/1498)
+  'isAt': macro_recall=0.5113, accuracy=0.9032 (1353/1498)
+  'global': macro_recall=0.4260 (2265/2996)
+
+
+
+================================================================
+prompt=en  shots=5
+================================================================
+
+Evaluation Results for dev-fr.jsonl:
+  'at': macro_recall=0.3333, accuracy=0.6355 (951/1498)
+  'isAt': macro_recall=0.5000, accuracy=0.9152 (1371/1498)
+  'global': macro_recall=0.4167 (2322/2996)
+
+
+
+================================================================
+prompt=native  shots=0
+================================================================
+
+Evaluation Results for dev-fr.jsonl:
+  'at': macro_recall=0.3333, accuracy=0.6355 (951/1498)
+  'isAt': macro_recall=0.5000, accuracy=0.9152 (1371/1498)
+  'global': macro_recall=0.4167 (2322/2996)
+
+
+
+================================================================
+prompt=native  shots=3
+================================================================
+
+Evaluation Results for dev-fr.jsonl:
+  'at': macro_recall=0.3333, accuracy=0.6355 (951/1498)
+  'isAt': macro_recall=0.5000, accuracy=0.9152 (1371/1498)
+  'global': macro_recall=0.4167 (2322/2996)
+
+
+
+================================================================
+prompt=native  shots=5
+================================================================
+
+Evaluation Results for dev-fr.jsonl:
+  'at': macro_recall=0.3333, accuracy=0.6355 (951/1498)
+  'isAt': macro_recall=0.5000, accuracy=0.9152 (1371/1498)
+  'global': macro_recall=0.4167 (2322/2996)
+
+

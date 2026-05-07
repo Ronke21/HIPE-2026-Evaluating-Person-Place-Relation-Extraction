@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Run logs (large, machine-specific)
+BIU_NLP_prediction/hipe_run_*.log
+BIU_NLP_prediction/qwen_rerun.log
+
+# Archive (old experiments, not part of main submission)
+ARCHIVE/
+
+# Temp / editor
+.DS_Store
+*.swp
+*.swo

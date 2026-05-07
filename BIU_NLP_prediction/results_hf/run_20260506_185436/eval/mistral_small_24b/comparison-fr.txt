@@ -1,0 +1,92 @@
+
+================================================================
+prompt=en  shots=0
+================================================================
+
+Evaluation Results for dev-fr.jsonl:
+  'at': macro_recall=0.5205, accuracy=0.4680 (701/1498)
+  'isAt': macro_recall=0.6293, accuracy=0.9099 (1363/1498)
+  'global': macro_recall=0.5749 (2064/2996)
+
+
+
+================================================================
+prompt=en  shots=3
+================================================================
+
+[scorer exited 1]
+Traceback (most recent call last):
+  File "/home/nlp/ronke21/HIPE CLEF 2026 - Multilingual Relation Extraction/HIPE-2026-data/scripts/file_scorer_evaluation.py", line 6, in <module>
+    from check_jsonlschema import load_schema, validate_jsonl_file
+  File "/home/nlp/ronke21/HIPE CLEF 2026 - Multilingual Relation Extraction/HIPE-2026-data/scripts/check_jsonlschema.py", line 7, in <module>
+    from jsonschema import validate, ValidationError
+ModuleNotFoundError: No module named 'jsonschema'
+
+
+================================================================
+prompt=en  shots=5
+================================================================
+
+Evaluation Results for dev-fr.jsonl:
+  'at': macro_recall=0.4969, accuracy=0.3571 (535/1498)
+  'isAt': macro_recall=0.6472, accuracy=0.9166 (1373/1498)
+  'global': macro_recall=0.5720 (1908/2996)
+
+
+
+================================================================
+prompt=en  shots=10
+================================================================
+
+Evaluation Results for dev-fr.jsonl:
+  'at': macro_recall=0.4528, accuracy=0.4132 (619/1498)
+  'isAt': macro_recall=0.6193, accuracy=0.9112 (1365/1498)
+  'global': macro_recall=0.5360 (1984/2996)
+
+
+
+================================================================
+prompt=native  shots=0
+================================================================
+
+Evaluation Results for dev-fr.jsonl:
+  'at': macro_recall=0.5677, accuracy=0.5320 (797/1498)
+  'isAt': macro_recall=0.6151, accuracy=0.9232 (1383/1498)
+  'global': macro_recall=0.5914 (2180/2996)
+
+
+
+================================================================
+prompt=native  shots=3
+================================================================
+
+[scorer exited 1]
+Traceback (most recent call last):
+  File "/home/nlp/ronke21/HIPE CLEF 2026 - Multilingual Relation Extraction/HIPE-2026-data/scripts/file_scorer_evaluation.py", line 6, in <module>
+    from check_jsonlschema import load_schema, validate_jsonl_file
+  File "/home/nlp/ronke21/HIPE CLEF 2026 - Multilingual Relation Extraction/HIPE-2026-data/scripts/check_jsonlschema.py", line 7, in <module>
+    from jsonschema import validate, ValidationError
+ModuleNotFoundError: No module named 'jsonschema'
+
+
+================================================================
+prompt=native  shots=5
+================================================================
+
+Evaluation Results for dev-fr.jsonl:
+  'at': macro_recall=0.5456, accuracy=0.4686 (702/1498)
+  'isAt': macro_recall=0.6097, accuracy=0.9199 (1378/1498)
+  'global': macro_recall=0.5776 (2080/2996)
+
+
+
+================================================================
+prompt=native  shots=10
+================================================================
+
+Evaluation Results for dev-fr.jsonl:
+  'at': macro_recall=0.4861, accuracy=0.4366 (654/1498)
+  'isAt': macro_recall=0.5851, accuracy=0.9206 (1379/1498)
+  'global': macro_recall=0.5356 (2033/2996)
+
+

@@ -1,0 +1,208 @@
+2026-05-06 12:09:57 INFO Log file: results/smoke/run_20260506_120957.log
+2026-05-06 12:09:57 INFO Prompt [de]: /home/nlp/ronke21/HIPE CLEF 2026 - Multilingual Relation Extraction/BIU_NLP_prediction/prompts/classify_pair_de.txt
+2026-05-06 12:09:57 INFO Prompt [en]: /home/nlp/ronke21/HIPE CLEF 2026 - Multilingual Relation Extraction/BIU_NLP_prediction/prompts/classify_pair_en.txt
+2026-05-06 12:09:57 INFO Prompt [fr]: /home/nlp/ronke21/HIPE CLEF 2026 - Multilingual Relation Extraction/BIU_NLP_prediction/prompts/classify_pair_fr.txt
+2026-05-06 12:09:57 INFO Models       : ['gemma', 'glm']
+2026-05-06 12:09:57 INFO Mode         : eval
+2026-05-06 12:09:57 INFO Prompt langs : ['en']
+2026-05-06 12:09:57 INFO Shots        : [0, 5]
+2026-05-06 12:09:57 INFO Max pairs    : 5
+2026-05-06 12:09:57 INFO Output       : results/smoke
+2026-05-06 12:09:57 INFO Total eval cells: 12
+2026-05-06 12:09:59 INFO === EVAL  model=gemma  prompt_langs=['en']  shots=[0, 5] ===
+2026-05-06 12:09:59 INFO RUN: dev-de  prompt=en  shots=0  model=google/gemma-4-31b-it:free
+2026-05-06 12:09:59 INFO RUN: dev-fr  prompt=en  shots=0  model=google/gemma-4-31b-it:free
+2026-05-06 12:09:59 INFO RUN: dev-en  prompt=en  shots=0  model=google/gemma-4-31b-it:free
+2026-05-06 12:10:00 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:00 INFO Retrying request to /chat/completions in 0.455665 seconds
+2026-05-06 12:10:00 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:00 INFO Retrying request to /chat/completions in 0.460152 seconds
+2026-05-06 12:10:00 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:00 INFO Retrying request to /chat/completions in 0.379480 seconds
+2026-05-06 12:10:01 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:01 INFO Retrying request to /chat/completions in 0.950282 seconds
+2026-05-06 12:10:01 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:01 INFO Retrying request to /chat/completions in 0.954299 seconds
+2026-05-06 12:10:01 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:01 INFO Retrying request to /chat/completions in 0.764087 seconds
+2026-05-06 12:10:02 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:02 INFO Retrying request to /chat/completions in 1.532747 seconds
+2026-05-06 12:10:02 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:02 INFO Retrying request to /chat/completions in 1.920245 seconds
+2026-05-06 12:10:02 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:02 INFO Retrying request to /chat/completions in 1.956486 seconds
+2026-05-06 12:10:04 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:04 INFO Retrying request to /chat/completions in 3.288573 seconds
+2026-05-06 12:10:04 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:04 INFO Retrying request to /chat/completions in 3.056064 seconds
+2026-05-06 12:10:04 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:04 INFO Retrying request to /chat/completions in 3.270668 seconds
+2026-05-06 12:10:07 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:07 INFO Retrying request to /chat/completions in 6.588323 seconds
+2026-05-06 12:10:07 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:07 INFO Retrying request to /chat/completions in 6.400091 seconds
+2026-05-06 12:10:08 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:08 INFO Retrying request to /chat/completions in 6.521213 seconds
+2026-05-06 12:10:14 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:14 INFO Retrying request to /chat/completions in 7.572124 seconds
+2026-05-06 12:10:15 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-06 12:10:16 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-06 12:10:20 INFO [1/107] GDL-1938-04-18-a-i0003  pair 1  at=FALSE    isAt=FALSE  fallback=False  shots=0
+2026-05-06 12:10:20 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:20 INFO Retrying request to /chat/completions in 0.414063 seconds
+2026-05-06 12:10:21 INFO [1/32] NZZ-1928-05-29-a-p0007  pair 1  at=FALSE    isAt=FALSE  fallback=False  shots=0
+2026-05-06 12:10:21 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:21 INFO Retrying request to /chat/completions in 0.915680 seconds
+2026-05-06 12:10:21 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:21 INFO Retrying request to /chat/completions in 0.451962 seconds
+2026-05-06 12:10:22 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:22 INFO Retrying request to /chat/completions in 0.824452 seconds
+2026-05-06 12:10:22 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:22 INFO Retrying request to /chat/completions in 1.583796 seconds
+2026-05-06 12:10:22 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:22 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:22 INFO Retrying request to /chat/completions in 0.480186 seconds
+2026-05-06 12:10:23 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:23 INFO Retrying request to /chat/completions in 1.513059 seconds
+2026-05-06 12:10:23 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:23 INFO Retrying request to /chat/completions in 0.763369 seconds
+2026-05-06 12:10:24 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:24 INFO Retrying request to /chat/completions in 3.165597 seconds
+2026-05-06 12:10:24 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:24 INFO Retrying request to /chat/completions in 1.903486 seconds
+2026-05-06 12:10:24 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:24 INFO Retrying request to /chat/completions in 3.693555 seconds
+2026-05-06 12:10:26 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:26 INFO Retrying request to /chat/completions in 3.479032 seconds
+2026-05-06 12:10:27 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:27 INFO Retrying request to /chat/completions in 7.306884 seconds
+2026-05-06 12:10:28 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:28 INFO Retrying request to /chat/completions in 6.212299 seconds
+2026-05-06 12:10:29 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:29 INFO Retrying request to /chat/completions in 7.667968 seconds
+2026-05-06 12:10:34 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:34 INFO Retrying request to /chat/completions in 7.794339 seconds
+2026-05-06 12:10:34 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:34 INFO Retrying request to /chat/completions in 7.438101 seconds
+2026-05-06 12:10:37 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:37 INFO Retrying request to /chat/completions in 7.869473 seconds
+2026-05-06 12:10:42 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:42 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:42 INFO Retrying request to /chat/completions in 0.454598 seconds
+2026-05-06 12:10:42 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:42 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:42 INFO Retrying request to /chat/completions in 0.486787 seconds
+2026-05-06 12:10:42 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:42 INFO Retrying request to /chat/completions in 0.998862 seconds
+2026-05-06 12:10:43 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:43 INFO Retrying request to /chat/completions in 0.774124 seconds
+2026-05-06 12:10:43 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:43 INFO Retrying request to /chat/completions in 1.517206 seconds
+2026-05-06 12:10:44 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:44 INFO Retrying request to /chat/completions in 1.980511 seconds
+2026-05-06 12:10:45 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:45 INFO Retrying request to /chat/completions in 3.125903 seconds
+2026-05-06 12:10:45 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:45 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:45 INFO Retrying request to /chat/completions in 0.378191 seconds
+2026-05-06 12:10:46 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:46 INFO Retrying request to /chat/completions in 0.871740 seconds
+2026-05-06 12:10:46 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:46 INFO Retrying request to /chat/completions in 3.138881 seconds
+2026-05-06 12:10:47 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:47 INFO Retrying request to /chat/completions in 1.606239 seconds
+2026-05-06 12:10:48 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:48 INFO Retrying request to /chat/completions in 6.408116 seconds
+2026-05-06 12:10:48 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:48 INFO Retrying request to /chat/completions in 3.518753 seconds
+2026-05-06 12:10:49 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:49 INFO Retrying request to /chat/completions in 7.734145 seconds
+2026-05-06 12:10:52 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:52 INFO Retrying request to /chat/completions in 7.954663 seconds
+2026-05-06 12:10:55 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:55 INFO Retrying request to /chat/completions in 7.011731 seconds
+2026-05-06 12:10:57 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:10:57 INFO Retrying request to /chat/completions in 6.497238 seconds
+2026-05-06 12:11:00 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:00 INFO Retrying request to /chat/completions in 6.958690 seconds
+2026-05-06 12:11:02 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:02 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:02 INFO Retrying request to /chat/completions in 0.438670 seconds
+2026-05-06 12:11:02 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:02 INFO Retrying request to /chat/completions in 0.811649 seconds
+2026-05-06 12:11:03 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:03 INFO Retrying request to /chat/completions in 1.561545 seconds
+2026-05-06 12:11:03 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:03 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:03 INFO Retrying request to /chat/completions in 0.401469 seconds
+2026-05-06 12:11:04 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:04 INFO Retrying request to /chat/completions in 0.962958 seconds
+2026-05-06 12:11:05 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:05 INFO Retrying request to /chat/completions in 3.122961 seconds
+2026-05-06 12:11:05 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:05 INFO Retrying request to /chat/completions in 1.934359 seconds
+2026-05-06 12:11:07 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:07 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:07 INFO Retrying request to /chat/completions in 0.399532 seconds
+2026-05-06 12:11:07 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:07 INFO Retrying request to /chat/completions in 3.034862 seconds
+2026-05-06 12:11:08 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:08 INFO Retrying request to /chat/completions in 0.773419 seconds
+2026-05-06 12:11:08 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:08 INFO Retrying request to /chat/completions in 6.340842 seconds
+2026-05-06 12:11:09 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:09 INFO Retrying request to /chat/completions in 1.609131 seconds
+2026-05-06 12:11:10 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:10 INFO Retrying request to /chat/completions in 3.911295 seconds
+2026-05-06 12:11:10 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:10 INFO Retrying request to /chat/completions in 7.766849 seconds
+2026-05-06 12:11:14 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:14 INFO Retrying request to /chat/completions in 6.661552 seconds
+2026-05-06 12:11:14 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:14 INFO Retrying request to /chat/completions in 7.870701 seconds
+2026-05-06 12:11:18 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:18 INFO Retrying request to /chat/completions in 6.423453 seconds
+2026-05-06 12:11:21 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:21 INFO Retrying request to /chat/completions in 7.938052 seconds
+2026-05-06 12:11:23 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:23 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:23 INFO Retrying request to /chat/completions in 0.494538 seconds
+2026-05-06 12:11:23 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:23 INFO Retrying request to /chat/completions in 0.776125 seconds
+2026-05-06 12:11:24 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:24 INFO Retrying request to /chat/completions in 1.755409 seconds
+2026-05-06 12:11:25 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:25 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:25 INFO Retrying request to /chat/completions in 0.489634 seconds
+2026-05-06 12:11:26 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:26 INFO Retrying request to /chat/completions in 0.803995 seconds
+2026-05-06 12:11:26 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:26 INFO Retrying request to /chat/completions in 3.549164 seconds
+2026-05-06 12:11:27 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:27 INFO Retrying request to /chat/completions in 1.652624 seconds
+2026-05-06 12:11:28 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:28 INFO Retrying request to /chat/completions in 3.739053 seconds
+2026-05-06 12:11:29 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:29 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:29 INFO Retrying request to /chat/completions in 0.427474 seconds
+2026-05-06 12:11:29 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:29 INFO Retrying request to /chat/completions in 7.089993 seconds
+2026-05-06 12:11:30 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:30 INFO Retrying request to /chat/completions in 0.937291 seconds
+2026-05-06 12:11:31 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:31 INFO Retrying request to /chat/completions in 1.741115 seconds
+2026-05-06 12:11:32 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:32 INFO Retrying request to /chat/completions in 7.501227 seconds
+2026-05-06 12:11:33 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:33 INFO Retrying request to /chat/completions in 3.787250 seconds
+2026-05-06 12:11:37 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:37 INFO Retrying request to /chat/completions in 7.802490 seconds
+2026-05-06 12:11:37 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:37 INFO Retrying request to /chat/completions in 7.557016 seconds
+2026-05-06 12:11:40 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:40 INFO Retrying request to /chat/completions in 7.130485 seconds
+2026-05-06 12:11:44 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:44 INFO Retrying request to /chat/completions in 7.105956 seconds
+2026-05-06 12:11:45 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:47 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-05-06 12:11:52 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 429 Too Many Requests"

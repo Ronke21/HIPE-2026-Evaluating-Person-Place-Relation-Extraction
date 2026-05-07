@@ -1,0 +1,6 @@
+[submodule "HIPE-2026-data"]
+	path = HIPE-2026-data
+	url = https://github.com/hipe-eval/HIPE-2026-data.git
+[submodule "hipe-2026-llm-baseline"]
+	path = hipe-2026-llm-baseline
+	url = https://github.com/hipe-eval/hipe-2026-llm-baseline.git

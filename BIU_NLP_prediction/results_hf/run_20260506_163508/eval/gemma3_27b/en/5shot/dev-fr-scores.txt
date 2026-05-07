@@ -1,0 +1,6 @@
+
+Evaluation Results for dev-fr.jsonl:
+  'at': macro_recall=0.3551, accuracy=0.5220 (782/1498)
+  'isAt': macro_recall=0.5944, accuracy=0.8919 (1336/1498)
+  'global': macro_recall=0.4747 (2118/2996)
+
