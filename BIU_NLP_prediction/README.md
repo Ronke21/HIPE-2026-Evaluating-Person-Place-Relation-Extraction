@@ -26,7 +26,7 @@ For each test file we selected the best configuration (prompt language × few-sh
 | `gemma3_27b` | google/gemma-3-27b-it | 27B dense | ~54 GB |
 | `mistral_small_24b` | mistralai/Mistral-Small-24B-Instruct-2501 | 24B dense | ~48 GB |
 | `aya_32b` | CohereForAI/aya-expanse-32b | 32B dense | ~64 GB |
-| `qwen3_6_27b` | Qwen/Qwen3-30B-A3B-Instruct | 30B total (3B active, MoE) | ~60 GB |
+| `qwen3_6_27b` | Qwen/Qwen3-30B-A3B-Instruct-2507 | 30B total (3B active, MoE) | ~60 GB |
 
 ---
 

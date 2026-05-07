@@ -58,7 +58,7 @@ Models evaluated:
 - **google/gemma-3-27b-it** — 27B dense
 - **mistralai/Mistral-Small-24B-Instruct-2501** — 24B dense
 - **CohereForAI/aya-expanse-32b** — 32B dense, multilingual
-- **Qwen/Qwen3-30B-A3B-Instruct** — MoE, 3B active / 30B total
+- **Qwen/Qwen3-30B-A3B-Instruct-2507** — MoE, 3B active / 30B total
 
 Prompt variants: English-language prompt vs. native-language prompt (DE/FR).  
 Few-shot counts: 0, 3, 5, 10.
