@@ -1,6 +1,6 @@
 # HIPE 2026 — Results Summary
 
-**Team:** BIU NLP, Bar-Ilan University  |  **Task:** person–place relation qualification (at / isAt)  |  **Date:** 2026-05-07
+**Team:** BIU NLP, Bar-Ilan University  |  **Task:** person–place relation qualification (at / isAt)  |  **Updated:** 2026-05-08
 
 ---
 
@@ -9,10 +9,10 @@
 | Model | DE | EN | FR |
 |---|---|---|---|
 | gemma-3-27b-it | **0.5622** (native/0sh) | **0.7209** (en/0sh) | **0.6611** (en/0sh) |
-| gemma-4-26B-A4B-it (MoE) | **0.7119** (en/3sh) | **0.7349** (en/3sh) | **0.5252** (en/0sh) |
+| gemma-4-26B-A4B-it (MoE) | **0.7119** (en/3sh) | **0.7550** (en/5sh) | **0.7218** (en/3sh) |
 | Mistral-Small-24B | **0.5917** (native/0sh) | **0.5935** (native/0sh) | **0.5914** (native/0sh) |
 | aya-expanse-32b | **0.5950** (en/0sh) | **0.5967** (en/0sh) | **0.6183** (en/0sh) |
-| Qwen3-30B-A3B (MoE) | — | — | — |
+| Qwen3-30B-A3B-2507 (MoE) | — | — | — |
 
 *All-FALSE baseline: glb.rec ≈ 0.4167*
 
@@ -45,8 +45,8 @@
 | Shots | DE | EN | FR |
 |---|---|---|---|
 | 0-shot | 0.5541 (at 0.4322 / isAt 0.6760) | 0.7347 (at 0.6558 / isAt 0.8137) | 0.5252 (at 0.4327 / isAt 0.6178) |
-| 3-shot | 0.7119 (at 0.6238 / isAt 0.8000) | 0.7349 (at 0.6411 / isAt 0.8287) | — |
-| 5-shot | 0.4789 (at 0.3925 / isAt 0.5652) | — | — |
+| 3-shot | 0.7119 (at 0.6238 / isAt 0.8000) | 0.7349 (at 0.6411 / isAt 0.8287) | 0.7218 (at 0.6567 / isAt 0.7869) |
+| 5-shot | 0.4789 (at 0.3925 / isAt 0.5652) | 0.7550 (at 0.6534 / isAt 0.8565) | — |
 
 **Prompt: native**  
 
@@ -83,13 +83,13 @@
 | 0-shot | 0.5950 (at 0.4862 / isAt 0.7039) | 0.5967 (at 0.4045 / isAt 0.7888) | 0.6183 (at 0.4591 / isAt 0.7775) |
 | 3-shot | 0.5680 (at 0.3867 / isAt 0.7493) | 0.5823 (at 0.3922 / isAt 0.7723) | 0.4260 (at 0.3407 / isAt 0.5113) |
 
-### Qwen3-30B-A3B (MoE)
+### Qwen3-30B-A3B-2507 (MoE)
 
 *No eval results yet.*
 
 ---
 
-## 3. Test Prediction Availability
+## 3. Test Predictions — Best per Model
 
 ### impresso-test-de
 
@@ -98,151 +98,94 @@
 | 1 | gemma-4-26B-A4B-it (MoE) | 0.7119 | en/3shot | `BIU-gemma4_26b-en-3shot_HIPE-2026-v1.0-impresso-test-de_run1.jsonl` |
 | 2 | Mistral-Small-24B | 0.5917 | native/0shot | `BIU-mistral_small_24b-native-0shot_HIPE-2026-v1.0-impresso-test-de_run1.jsonl` |
 | 3 | gemma-3-27b-it | 0.5622 | native/0shot | `BIU-gemma3_27b-native-0shot_HIPE-2026-v1.0-impresso-test-de_run1.jsonl` |
-| — | Qwen3-30B-A3B (MoE) | — | — | *no valid file* |
+| — | Qwen3-30B-A3B-2507 (MoE) | — | — | *no valid file* |
 | — | aya-expanse-32b | — | — | *no valid file* |
 
 ### impresso-test-en
 
 | Rank | Model | Best Dev | Config | File |
 |---|---|---|---|---|
-| 1 | gemma-4-26B-A4B-it (MoE) | 0.7349 | en/3shot | `BIU-gemma4_26b-en-3shot_HIPE-2026-v1.0-impresso-test-en_run1.jsonl` |
+| 1 | gemma-4-26B-A4B-it (MoE) | 0.7550 | en/5shot | `BIU-gemma4_26b-en-5shot_HIPE-2026-v1.0-impresso-test-en_run1.jsonl` |
 | 2 | gemma-3-27b-it | 0.7209 | en/0shot | `BIU-gemma3_27b-en-0shot_HIPE-2026-v1.0-impresso-test-en_run1.jsonl` |
 | 3 | Mistral-Small-24B | 0.5935 | native/0shot | `BIU-mistral_small_24b-native-0shot_HIPE-2026-v1.0-impresso-test-en_run1.jsonl` |
-| — | Qwen3-30B-A3B (MoE) | — | — | *no valid file* |
+| — | Qwen3-30B-A3B-2507 (MoE) | — | — | *no valid file* |
 | — | aya-expanse-32b | — | — | *no valid file* |
 
 ### impresso-test-fr
 
 | Rank | Model | Best Dev | Config | File |
 |---|---|---|---|---|
-| 1 | gemma-3-27b-it | 0.6611 | en/0shot | `BIU-gemma3_27b-en-0shot_HIPE-2026-v1.0-impresso-test-fr_run1.jsonl` |
-| 2 | Mistral-Small-24B | 0.5914 | native/0shot | `BIU-mistral_small_24b-native-0shot_HIPE-2026-v1.0-impresso-test-fr_run1.jsonl` |
-| 3 | gemma-4-26B-A4B-it (MoE) | 0.5252 | en/0shot | `BIU-gemma4_26b-en-0shot_HIPE-2026-v1.0-impresso-test-fr_run1.jsonl` |
-| — | Qwen3-30B-A3B (MoE) | — | — | *no valid file* |
+| 1 | gemma-4-26B-A4B-it (MoE) | 0.7218 | en/3shot | `BIU-gemma4_26b-en-3shot_HIPE-2026-v1.0-impresso-test-fr_run1.jsonl` |
+| 2 | gemma-3-27b-it | 0.6611 | en/0shot | `BIU-gemma3_27b-en-0shot_HIPE-2026-v1.0-impresso-test-fr_run1.jsonl` |
+| 3 | Mistral-Small-24B | 0.5914 | native/0shot | `BIU-mistral_small_24b-native-0shot_HIPE-2026-v1.0-impresso-test-fr_run1.jsonl` |
+| — | Qwen3-30B-A3B-2507 (MoE) | — | — | *no valid file* |
 | — | aya-expanse-32b | — | — | *no valid file* |
 
 ### surprise-test-fr
 
 | Rank | Model | Best Dev | Config | File |
 |---|---|---|---|---|
-| 1 | gemma-3-27b-it | 0.6611 | en/0shot | `BIU-gemma3_27b-en-0shot_HIPE-2026-v1.0-surprise-test-fr_run1.jsonl` |
-| 2 | Mistral-Small-24B | 0.5914 | native/0shot | `BIU-mistral_small_24b-native-0shot_HIPE-2026-v1.0-surprise-test-fr_run1.jsonl` |
-| 3 | gemma-4-26B-A4B-it (MoE) | 0.5252 | en/0shot | `BIU-gemma4_26b-en-0shot_HIPE-2026-v1.0-surprise-test-fr_run1.jsonl` |
-| — | Qwen3-30B-A3B (MoE) | — | — | *no valid file* |
+| 1 | gemma-4-26B-A4B-it (MoE) | 0.7218 | en/3shot | `BIU-gemma4_26b-en-3shot_HIPE-2026-v1.0-surprise-test-fr_run1.jsonl` |
+| 2 | gemma-3-27b-it | 0.6611 | en/0shot | `BIU-gemma3_27b-en-0shot_HIPE-2026-v1.0-surprise-test-fr_run1.jsonl` |
+| 3 | Mistral-Small-24B | 0.5914 | native/0shot | `BIU-mistral_small_24b-native-0shot_HIPE-2026-v1.0-surprise-test-fr_run1.jsonl` |
+| — | Qwen3-30B-A3B-2507 (MoE) | — | — | *no valid file* |
 | — | aya-expanse-32b | — | — | *no valid file* |
 
 ---
 
-## 4. Submission — 3 Runs per Test File (gemma3 / gemma4 / mistral)
+## 4. Submission 2 — Updated Best Results (gemma3 / gemma4 / mistral)
 
-**impresso-test-de**
+**impresso-test-de:**
 
   - run1: google/gemma-4-26B-A4B-it  dev=0.7119  en/3shot  `BIU-gemma4_26b-en-3shot_HIPE-2026-v1.0-impresso-test-de_run1.jsonl`
   - run2: mistralai/Mistral-Small-24B-Instruct-2501  dev=0.5917  native/0shot  `BIU-mistral_small_24b-native-0shot_HIPE-2026-v1.0-impresso-test-de_run1.jsonl`
   - run3: google/gemma-3-27b-it  dev=0.5622  native/0shot  `BIU-gemma3_27b-native-0shot_HIPE-2026-v1.0-impresso-test-de_run1.jsonl`
 
-**impresso-test-en**
+**impresso-test-en:**
 
-  - run1: google/gemma-4-26B-A4B-it  dev=0.7349  en/3shot  `BIU-gemma4_26b-en-3shot_HIPE-2026-v1.0-impresso-test-en_run1.jsonl`
+  - run1: google/gemma-4-26B-A4B-it  dev=0.7550  en/5shot  `BIU-gemma4_26b-en-5shot_HIPE-2026-v1.0-impresso-test-en_run1.jsonl`
   - run2: google/gemma-3-27b-it  dev=0.7209  en/0shot  `BIU-gemma3_27b-en-0shot_HIPE-2026-v1.0-impresso-test-en_run1.jsonl`
   - run3: mistralai/Mistral-Small-24B-Instruct-2501  dev=0.5935  native/0shot  `BIU-mistral_small_24b-native-0shot_HIPE-2026-v1.0-impresso-test-en_run1.jsonl`
 
-**impresso-test-fr**
+**impresso-test-fr:**
 
-  - run1: google/gemma-3-27b-it  dev=0.6611  en/0shot  `BIU-gemma3_27b-en-0shot_HIPE-2026-v1.0-impresso-test-fr_run1.jsonl`
-  - run2: mistralai/Mistral-Small-24B-Instruct-2501  dev=0.5914  native/0shot  `BIU-mistral_small_24b-native-0shot_HIPE-2026-v1.0-impresso-test-fr_run1.jsonl`
-  - run3: google/gemma-4-26B-A4B-it  dev=0.5252  en/0shot  `BIU-gemma4_26b-en-0shot_HIPE-2026-v1.0-impresso-test-fr_run1.jsonl`
+  - run1: google/gemma-4-26B-A4B-it  dev=0.7218  en/3shot  `BIU-gemma4_26b-en-3shot_HIPE-2026-v1.0-impresso-test-fr_run1.jsonl`
+  - run2: google/gemma-3-27b-it  dev=0.6611  en/0shot  `BIU-gemma3_27b-en-0shot_HIPE-2026-v1.0-impresso-test-fr_run1.jsonl`
+  - run3: mistralai/Mistral-Small-24B-Instruct-2501  dev=0.5914  native/0shot  `BIU-mistral_small_24b-native-0shot_HIPE-2026-v1.0-impresso-test-fr_run1.jsonl`
 
-**surprise-test-fr**
+**surprise-test-fr:**
 
-  - run1: google/gemma-3-27b-it  dev=0.6611  en/0shot  `BIU-gemma3_27b-en-0shot_HIPE-2026-v1.0-surprise-test-fr_run1.jsonl`
-  - run2: mistralai/Mistral-Small-24B-Instruct-2501  dev=0.5914  native/0shot  `BIU-mistral_small_24b-native-0shot_HIPE-2026-v1.0-surprise-test-fr_run1.jsonl`
-  - run3: google/gemma-4-26B-A4B-it  dev=0.5252  en/0shot  `BIU-gemma4_26b-en-0shot_HIPE-2026-v1.0-surprise-test-fr_run1.jsonl`
+  - run1: google/gemma-4-26B-A4B-it  dev=0.7218  en/3shot  `BIU-gemma4_26b-en-3shot_HIPE-2026-v1.0-surprise-test-fr_run1.jsonl`
+  - run2: google/gemma-3-27b-it  dev=0.6611  en/0shot  `BIU-gemma3_27b-en-0shot_HIPE-2026-v1.0-surprise-test-fr_run1.jsonl`
+  - run3: mistralai/Mistral-Small-24B-Instruct-2501  dev=0.5914  native/0shot  `BIU-mistral_small_24b-native-0shot_HIPE-2026-v1.0-surprise-test-fr_run1.jsonl`
 
 ---
 
-## 5. Run Status
+## 5. Submission 1 vs Submission 2 — Delta
+
+| Test file | Model | Sub1 Dev | Sub2 Dev | Delta |
+|---|---|---|---|---|
+| impresso-test-de | gemma-4-26B-A4B-it (MoE) | 0.7119 (en/3sh) | 0.7119 (en/3sh) | +0.0000 |
+| impresso-test-de | Mistral-Small-24B | 0.5917 (native/0sh) | 0.5917 (native/0sh) | +0.0000 |
+| impresso-test-de | gemma-3-27b-it | 0.5622 (native/0sh) | 0.5622 (native/0sh) | +0.0000 |
+| impresso-test-en | gemma-4-26B-A4B-it (MoE) | 0.7349 (en/3sh) | 0.7550 (en/5sh) | +0.0201 ← IMPROVED |
+| impresso-test-en | gemma-3-27b-it | 0.7209 (en/0sh) | 0.7209 (en/0sh) | +0.0000 |
+| impresso-test-en | Mistral-Small-24B | 0.5935 (native/0sh) | 0.5935 (native/0sh) | +0.0000 |
+| impresso-test-fr | gemma-4-26B-A4B-it (MoE) | 0.5252 (en/0sh) | 0.7218 (en/3sh) | +0.1966 ← IMPROVED |
+| impresso-test-fr | gemma-3-27b-it | 0.6611 (en/0sh) | 0.6611 (en/0sh) | +0.0000 |
+| impresso-test-fr | Mistral-Small-24B | 0.5914 (native/0sh) | 0.5914 (native/0sh) | +0.0000 |
+| surprise-test-fr | gemma-4-26B-A4B-it (MoE) | 0.5252 (en/0sh) | 0.7218 (en/3sh) | +0.1966 ← IMPROVED |
+| surprise-test-fr | gemma-3-27b-it | 0.6611 (en/0sh) | 0.6611 (en/0sh) | +0.0000 |
+| surprise-test-fr | Mistral-Small-24B | 0.5914 (native/0sh) | 0.5914 (native/0sh) | +0.0000 |
+
+---
+
+## 6. Run Status
 
 | Session | Models | GPUs | Status |
 |---|---|---|---|
-| hipe_23 (run_163508) | gemma3 → aya | 2,3 | aya running (test files in progress) |
-| hipe_45 (run_185436) | mistral | 4,5 | Done ✓ |
-| hipe_01 (run_200805) | gemma4 | 0,1 | Running (additional shots) |
-| hipe_07 (run_200805) | gemma4 en/3shot test | 7 | Done ✓ (de+en done, fr+surprise running) |
-| hipe_qwen (run_005527) | Qwen3-30B-A3B | 6 | Running (no valid scores yet) |
-
----
-
-## 6. Still Missing / Pending
-
-| Model | Prompt | Shots | Lang | Note |
-|---|---|---|---|---|
-| gemma-3-27b-it | en | 10 | de | missing |
-| gemma-3-27b-it | en | 10 | en | missing |
-| gemma-3-27b-it | en | 10 | fr | missing |
-| gemma-3-27b-it | native | 10 | de | missing |
-| gemma-3-27b-it | native | 10 | en | missing |
-| gemma-3-27b-it | native | 10 | fr | missing |
-| gemma-4-26B-A4B-it (MoE) | en | 3 | fr | missing |
-| gemma-4-26B-A4B-it (MoE) | en | 5 | en | missing |
-| gemma-4-26B-A4B-it (MoE) | en | 5 | fr | missing |
-| gemma-4-26B-A4B-it (MoE) | en | 10 | de | missing |
-| gemma-4-26B-A4B-it (MoE) | en | 10 | en | missing |
-| gemma-4-26B-A4B-it (MoE) | en | 10 | fr | missing |
-| gemma-4-26B-A4B-it (MoE) | native | 0 | en | missing |
-| gemma-4-26B-A4B-it (MoE) | native | 3 | de | missing |
-| gemma-4-26B-A4B-it (MoE) | native | 3 | en | missing |
-| gemma-4-26B-A4B-it (MoE) | native | 3 | fr | missing |
-| gemma-4-26B-A4B-it (MoE) | native | 5 | en | missing |
-| gemma-4-26B-A4B-it (MoE) | native | 5 | fr | missing |
-| gemma-4-26B-A4B-it (MoE) | native | 10 | de | missing |
-| gemma-4-26B-A4B-it (MoE) | native | 10 | en | missing |
-| gemma-4-26B-A4B-it (MoE) | native | 10 | fr | missing |
-| Mistral-Small-24B | en | 3 | de | missing |
-| Mistral-Small-24B | en | 3 | en | missing |
-| Mistral-Small-24B | en | 3 | fr | missing |
-| Mistral-Small-24B | native | 3 | de | missing |
-| Mistral-Small-24B | native | 3 | en | missing |
-| Mistral-Small-24B | native | 3 | fr | missing |
-| aya-expanse-32b | en | 5 | de | missing |
-| aya-expanse-32b | en | 5 | en | missing |
-| aya-expanse-32b | en | 5 | fr | missing |
-| aya-expanse-32b | en | 10 | de | missing |
-| aya-expanse-32b | en | 10 | en | missing |
-| aya-expanse-32b | en | 10 | fr | missing |
-| aya-expanse-32b | native | 0 | de | missing |
-| aya-expanse-32b | native | 0 | en | missing |
-| aya-expanse-32b | native | 0 | fr | missing |
-| aya-expanse-32b | native | 3 | de | missing |
-| aya-expanse-32b | native | 3 | en | missing |
-| aya-expanse-32b | native | 3 | fr | missing |
-| aya-expanse-32b | native | 5 | de | missing |
-| aya-expanse-32b | native | 5 | en | missing |
-| aya-expanse-32b | native | 5 | fr | missing |
-| aya-expanse-32b | native | 10 | de | missing |
-| aya-expanse-32b | native | 10 | en | missing |
-| aya-expanse-32b | native | 10 | fr | missing |
-| Qwen3-30B-A3B (MoE) | en | 0 | de | missing |
-| Qwen3-30B-A3B (MoE) | en | 0 | en | missing |
-| Qwen3-30B-A3B (MoE) | en | 0 | fr | missing |
-| Qwen3-30B-A3B (MoE) | en | 3 | de | missing |
-| Qwen3-30B-A3B (MoE) | en | 3 | en | missing |
-| Qwen3-30B-A3B (MoE) | en | 3 | fr | missing |
-| Qwen3-30B-A3B (MoE) | en | 5 | de | missing |
-| Qwen3-30B-A3B (MoE) | en | 5 | en | missing |
-| Qwen3-30B-A3B (MoE) | en | 5 | fr | missing |
-| Qwen3-30B-A3B (MoE) | en | 10 | de | missing |
-| Qwen3-30B-A3B (MoE) | en | 10 | en | missing |
-| Qwen3-30B-A3B (MoE) | en | 10 | fr | missing |
-| Qwen3-30B-A3B (MoE) | native | 0 | de | missing |
-| Qwen3-30B-A3B (MoE) | native | 0 | en | missing |
-| Qwen3-30B-A3B (MoE) | native | 0 | fr | missing |
-| Qwen3-30B-A3B (MoE) | native | 3 | de | missing |
-| Qwen3-30B-A3B (MoE) | native | 3 | en | missing |
-| Qwen3-30B-A3B (MoE) | native | 3 | fr | missing |
-| Qwen3-30B-A3B (MoE) | native | 5 | de | missing |
-| Qwen3-30B-A3B (MoE) | native | 5 | en | missing |
-| Qwen3-30B-A3B (MoE) | native | 5 | fr | missing |
-| Qwen3-30B-A3B (MoE) | native | 10 | de | missing |
-| Qwen3-30B-A3B (MoE) | native | 10 | en | missing |
-| Qwen3-30B-A3B (MoE) | native | 10 | fr | missing |
+| hipe_23 (run_163508) | gemma3 → aya | 2,3 | aya test files running (10-shot) |
+| hipe_45 | mistral | 4,5 | Running |
+| hipe_01 (run_200805) | gemma4 | 0,1 | Running (5-shot dev) |
+| hipe_07 (run_200805) | gemma4 en/3+5shot test | 7 | Done ✓ |
+| hipe_qwen (run_005527) | Qwen3-30B-A3B-2507 | 6 | Running (10-shot dev) |

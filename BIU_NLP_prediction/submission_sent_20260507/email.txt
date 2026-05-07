@@ -1,0 +1,100 @@
+To: hipe-2026-submission@listes.epfl.ch
+Subject: HIPE 2026 Submission — BIU NLP, Bar-Ilan University
+
+Dear HIPE 2026 organizers,
+
+Please find attached our system submissions for the HIPE 2026 shared task
+(person–place relation qualification: at / isAt).
+
+Team: BIU NLP, Bar-Ilan University
+Task: Multilingual Relation Extraction (at / isAt)
+Strategy: For each test file, we submit 3 runs — one from each of three
+          open-weight models — selected as the best configuration (prompt
+          language × few-shot count) per model on the dev set for the
+          corresponding language.
+
+---
+
+SUBMITTED RUNS (12 files total, 3 runs × 4 test files):
+
+  HIPE-2026-v1.0-impresso-test-de:
+    run1: google/gemma-4-26B-A4B-it
+      Prompt: en-language, 3-shot  |  Dev glb.rec: 0.7119
+      Parameters: 26,000,000,000  |  Size: 52,000 MB (bfloat16)
+      File: BIU-gemma4_26b-en-3shot_HIPE-2026-v1.0-impresso-test-de_run1.jsonl
+    run2: mistralai/Mistral-Small-24B-Instruct-2501
+      Prompt: native-language, 0-shot  |  Dev glb.rec: 0.5917
+      Parameters: 24,000,000,000  |  Size: 48,000 MB (bfloat16)
+      File: BIU-mistral_small_24b-native-0shot_HIPE-2026-v1.0-impresso-test-de_run2.jsonl
+    run3: google/gemma-3-27b-it
+      Prompt: native-language, 0-shot  |  Dev glb.rec: 0.5622
+      Parameters: 27,000,000,000  |  Size: 54,000 MB (bfloat16)
+      File: BIU-gemma3_27b-native-0shot_HIPE-2026-v1.0-impresso-test-de_run3.jsonl
+
+  HIPE-2026-v1.0-impresso-test-en:
+    run1: google/gemma-4-26B-A4B-it
+      Prompt: en-language, 3-shot  |  Dev glb.rec: 0.7349
+      Parameters: 26,000,000,000  |  Size: 52,000 MB (bfloat16)
+      File: BIU-gemma4_26b-en-3shot_HIPE-2026-v1.0-impresso-test-en_run1.jsonl
+    run2: google/gemma-3-27b-it
+      Prompt: en-language, 0-shot  |  Dev glb.rec: 0.7209
+      Parameters: 27,000,000,000  |  Size: 54,000 MB (bfloat16)
+      File: BIU-gemma3_27b-en-0shot_HIPE-2026-v1.0-impresso-test-en_run2.jsonl
+    run3: mistralai/Mistral-Small-24B-Instruct-2501
+      Prompt: native-language, 0-shot  |  Dev glb.rec: 0.5935
+      Parameters: 24,000,000,000  |  Size: 48,000 MB (bfloat16)
+      File: BIU-mistral_small_24b-native-0shot_HIPE-2026-v1.0-impresso-test-en_run3.jsonl
+
+  HIPE-2026-v1.0-impresso-test-fr:
+    run1: google/gemma-3-27b-it
+      Prompt: en-language, 0-shot  |  Dev glb.rec: 0.6611
+      Parameters: 27,000,000,000  |  Size: 54,000 MB (bfloat16)
+      File: BIU-gemma3_27b-en-0shot_HIPE-2026-v1.0-impresso-test-fr_run1.jsonl
+    run2: mistralai/Mistral-Small-24B-Instruct-2501
+      Prompt: native-language, 0-shot  |  Dev glb.rec: 0.5914
+      Parameters: 24,000,000,000  |  Size: 48,000 MB (bfloat16)
+      File: BIU-mistral_small_24b-native-0shot_HIPE-2026-v1.0-impresso-test-fr_run2.jsonl
+    run3: google/gemma-4-26B-A4B-it
+      Prompt: en-language, 0-shot  |  Dev glb.rec: 0.5252
+      Parameters: 26,000,000,000  |  Size: 52,000 MB (bfloat16)
+      File: BIU-gemma4_26b-en-0shot_HIPE-2026-v1.0-impresso-test-fr_run3.jsonl
+
+  HIPE-2026-v1.0-surprise-test-fr:
+    run1: google/gemma-3-27b-it
+      Prompt: en-language, 0-shot  |  Dev glb.rec: 0.6611
+      Parameters: 27,000,000,000  |  Size: 54,000 MB (bfloat16)
+      File: BIU-gemma3_27b-en-0shot_HIPE-2026-v1.0-surprise-test-fr_run1.jsonl
+    run2: mistralai/Mistral-Small-24B-Instruct-2501
+      Prompt: native-language, 0-shot  |  Dev glb.rec: 0.5914
+      Parameters: 24,000,000,000  |  Size: 48,000 MB (bfloat16)
+      File: BIU-mistral_small_24b-native-0shot_HIPE-2026-v1.0-surprise-test-fr_run2.jsonl
+    run3: google/gemma-4-26B-A4B-it
+      Prompt: en-language, 0-shot  |  Dev glb.rec: 0.5252
+      Parameters: 26,000,000,000  |  Size: 52,000 MB (bfloat16)
+      File: BIU-gemma4_26b-en-0shot_HIPE-2026-v1.0-surprise-test-fr_run3.jsonl
+
+---
+
+SYSTEM DESCRIPTION:
+
+All runs use open-weight large language models loaded via HuggingFace Transformers
+with no fine-tuning. Each model is prompted to classify each person–place entity
+pair with a structured JSON response:
+  {"at": "TRUE/FALSE/PROBABLE/POSSIBLE", "isAt": "TRUE/FALSE/PROBABLE/POSSIBLE"}
+
+For each test file we selected the best configuration (prompt language + shot
+count) per model ranked by global macro-recall on the dev set of the
+corresponding language, then submitted those three configurations as run1/run2/run3.
+Each run uses a distinct model (gemma-4, gemma-3, Mistral).
+
+Models used:
+  - google/gemma-4-26B-A4B-it             (Gemma 4 MoE: 4B active / 26B total)
+  - google/gemma-3-27b-it                  (Gemma 3, 27B dense)
+  - mistralai/Mistral-Small-24B-Instruct-2501  (Mistral Small, 24B dense)
+
+Inference was run on NVIDIA A100-SXM4-80GB GPUs using bfloat16 precision.
+
+---
+
+Best regards,
+BIU NLP Team, Bar-Ilan University
