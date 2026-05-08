@@ -11,6 +11,17 @@ Evaluation Results for dev-de.jsonl:
 
 
 ================================================================
+prompt=en  shots=3
+================================================================
+
+Evaluation Results for dev-de.jsonl:
+  'at': macro_recall=0.6238, accuracy=0.6481 (280/432)
+  'isAt': macro_recall=0.8000, accuracy=0.8657 (374/432)
+  'global': macro_recall=0.7119 (654/864)
+
+
+
+================================================================
 prompt=en  shots=5
 ================================================================
 
@@ -26,9 +37,9 @@ prompt=en  shots=10
 ================================================================
 
 Evaluation Results for dev-de.jsonl:
-  'at': macro_recall=0.3333, accuracy=0.5648 (243/432)
-  'isAt': macro_recall=0.5000, accuracy=0.9329 (403/432)
-  'global': macro_recall=0.4167 (646/864)
+  'at': macro_recall=0.6495, accuracy=0.6644 (287/432)
+  'isAt': macro_recall=0.8136, accuracy=0.8611 (372/432)
+  'global': macro_recall=0.7316 (659/864)
 
 
 
@@ -40,6 +51,17 @@ Evaluation Results for dev-de.jsonl:
   'at': macro_recall=0.4060, accuracy=0.5833 (252/432)
   'isAt': macro_recall=0.6132, accuracy=0.9352 (404/432)
   'global': macro_recall=0.5096 (656/864)
+
+
+
+================================================================
+prompt=native  shots=3
+================================================================
+
+Evaluation Results for dev-de.jsonl:
+  'at': macro_recall=0.6578, accuracy=0.6944 (300/432)
+  'isAt': macro_recall=0.7879, accuracy=0.9028 (390/432)
+  'global': macro_recall=0.7229 (690/864)
 
 
 
@@ -59,8 +81,8 @@ prompt=native  shots=10
 ================================================================
 
 Evaluation Results for dev-de.jsonl:
-  'at': macro_recall=0.3333, accuracy=0.5648 (243/432)
-  'isAt': macro_recall=0.5000, accuracy=0.9329 (403/432)
-  'global': macro_recall=0.4167 (646/864)
+  'at': macro_recall=0.6529, accuracy=0.6921 (299/432)
+  'isAt': macro_recall=0.8508, accuracy=0.9306 (402/432)
+  'global': macro_recall=0.7518 (701/864)
 
 

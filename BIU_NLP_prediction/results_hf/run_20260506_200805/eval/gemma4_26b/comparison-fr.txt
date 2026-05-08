@@ -11,13 +11,24 @@ Evaluation Results for dev-fr.jsonl:
 
 
 ================================================================
+prompt=en  shots=3
+================================================================
+
+Evaluation Results for dev-fr.jsonl:
+  'at': macro_recall=0.6567, accuracy=0.7383 (1106/1498)
+  'isAt': macro_recall=0.7869, accuracy=0.8912 (1335/1498)
+  'global': macro_recall=0.7218 (2441/2996)
+
+
+
+================================================================
 prompt=en  shots=5
 ================================================================
 
 Evaluation Results for dev-fr.jsonl:
-  'at': macro_recall=0.3333, accuracy=0.6355 (951/1498)
-  'isAt': macro_recall=0.5000, accuracy=0.9152 (1371/1498)
-  'global': macro_recall=0.4167 (2322/2996)
+  'at': macro_recall=0.6612, accuracy=0.7497 (1123/1498)
+  'isAt': macro_recall=0.8145, accuracy=0.8959 (1342/1498)
+  'global': macro_recall=0.7379 (2465/2996)
 
 
 
@@ -26,9 +37,9 @@ prompt=en  shots=10
 ================================================================
 
 Evaluation Results for dev-fr.jsonl:
-  'at': macro_recall=0.3333, accuracy=0.6355 (951/1498)
-  'isAt': macro_recall=0.5000, accuracy=0.9152 (1371/1498)
-  'global': macro_recall=0.4167 (2322/2996)
+  'at': macro_recall=0.6725, accuracy=0.7637 (1144/1498)
+  'isAt': macro_recall=0.8236, accuracy=0.9126 (1367/1498)
+  'global': macro_recall=0.7481 (2511/2996)
 
 
 
@@ -44,13 +55,24 @@ Evaluation Results for dev-fr.jsonl:
 
 
 ================================================================
+prompt=native  shots=3
+================================================================
+
+Evaluation Results for dev-fr.jsonl:
+  'at': macro_recall=0.6821, accuracy=0.7617 (1141/1498)
+  'isAt': macro_recall=0.7950, accuracy=0.9126 (1367/1498)
+  'global': macro_recall=0.7386 (2508/2996)
+
+
+
+================================================================
 prompt=native  shots=5
 ================================================================
 
 Evaluation Results for dev-fr.jsonl:
-  'at': macro_recall=0.3333, accuracy=0.6355 (951/1498)
-  'isAt': macro_recall=0.5000, accuracy=0.9152 (1371/1498)
-  'global': macro_recall=0.4167 (2322/2996)
+  'at': macro_recall=0.6757, accuracy=0.7650 (1146/1498)
+  'isAt': macro_recall=0.8108, accuracy=0.9152 (1371/1498)
+  'global': macro_recall=0.7432 (2517/2996)
 
 
 
@@ -59,8 +81,8 @@ prompt=native  shots=10
 ================================================================
 
 Evaluation Results for dev-fr.jsonl:
-  'at': macro_recall=0.3333, accuracy=0.6355 (951/1498)
-  'isAt': macro_recall=0.5000, accuracy=0.9152 (1371/1498)
-  'global': macro_recall=0.4167 (2322/2996)
+  'at': macro_recall=0.6714, accuracy=0.7657 (1147/1498)
+  'isAt': macro_recall=0.8004, accuracy=0.9159 (1372/1498)
+  'global': macro_recall=0.7359 (2519/2996)
 
 
