@@ -6,8 +6,7 @@ __pycache__/
 .Python
 
 # Run logs (large, machine-specific)
-BIU_NLP_prediction/hipe_run_*.log
-BIU_NLP_prediction/qwen_rerun.log
+BIU_NLP_prediction/logs/
 
 # Archive (old experiments, not part of main submission)
 ARCHIVE/

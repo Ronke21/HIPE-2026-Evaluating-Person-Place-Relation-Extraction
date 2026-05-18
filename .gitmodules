@@ -4,3 +4,6 @@
 [submodule "hipe-2026-llm-baseline"]
 	path = hipe-2026-llm-baseline
 	url = https://github.com/hipe-eval/hipe-2026-llm-baseline.git
+[submodule "hipe-2026-eval"]
+	path = hipe-2026-eval
+	url = https://github.com/hipe-eval/hipe-2026-eval
