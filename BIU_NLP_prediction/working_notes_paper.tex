@@ -1,0 +1,518 @@
+\documentclass[a4paper,11pt]{article}
+
+% ---------------------------------------------------------------
+% Packages
+% ---------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{parskip}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+% ---------------------------------------------------------------
+% Title and authors
+% ---------------------------------------------------------------
+\title{\textbf{BIU NLP at HIPE 2026:}\\
+Zero/Few-Shot LLM Prompting for Person--Place\\
+Relation Qualification in Historical Newspapers}
+
+\author{
+  [Author Name]\\
+  Department of Computer Science\\
+  Bar-Ilan University\\
+  Ramat Gan, Israel\\
+  \texttt{[email@biu.ac.il]}
+}
+
+\date{}
+
+% ---------------------------------------------------------------
+\begin{document}
+\maketitle
+
+% ---------------------------------------------------------------
+\begin{abstract}
+We describe the BIU NLP system submitted to the HIPE 2026 shared task on
+person--place relation qualification in multilingual historical newspapers.
+Our approach uses zero/few-shot prompting of open-weight large language models
+(LLMs) without any task-specific fine-tuning. We evaluate four models ---
+Gemma-4-26B (MoE), Gemma-3-27B, Mistral-Small-24B, and Aya-Expanse-32B ---
+under varying prompt languages (English, native) and few-shot counts (0, 3, 5,
+10). For each test file, we select the best configuration per model based on
+development set macro-recall, and submit the top three models as separate runs.
+Our best submission (Gemma-3-27B, English prompt, zero-shot) ranks \textbf{9th
+out of 46} for French and \textbf{19th out of 47} for English in the main
+evaluation. In the generalization setting (surprise French test set),
+Gemma-4-26B ranks \textbf{6th out of 46} (main evaluation) and \textbf{3rd out
+of 44} (binary evaluation).
+\end{abstract}
+
+% ---------------------------------------------------------------
+\section{Introduction}
+
+HIPE 2026 is a shared task at CLEF 2026 focused on \textbf{person--place
+relation extraction and qualification} in digitized historical European
+newspapers. Building on the entity recognition and linking tasks of HIPE-2020
+and HIPE-2022, HIPE 2026 targets the question \textit{Who was where, when?} ---
+aiming to support the reconstruction of life trajectories and mobility patterns
+from historical sources.
+
+The task presents several challenges that make standard NLP approaches
+difficult to apply directly: (1)~text is in three languages (German, English,
+French) spanning the 18th to early 20th century; (2)~documents are digitized
+from microfilm and contain significant OCR noise; (3)~the relations are
+semantically nuanced and context-dependent, not reducible to simple entity
+co-occurrence; and (4)~training data is limited relative to the number and
+diversity of newspapers covered.
+
+Given these characteristics, we hypothesized that large language models with
+strong multilingual and reasoning capabilities, prompted with explicit task
+definitions and label constraints, could compete effectively without the
+overhead of fine-tuning. This paper describes our system, experimental
+results, and analysis.
+
+% ---------------------------------------------------------------
+\section{Related Work}
+
+\paragraph{Historical Document NLP.}
+Processing historical documents poses unique challenges compared to
+contemporary text, most notably OCR noise, archaic spelling, and the absence
+of large annotated corpora. Prior work has addressed these through
+normalization pipelines, domain-adaptive pre-training, and data augmentation.
+The HIPE shared tasks (2020, 2022) established benchmarks for named entity
+recognition and entity linking in historical newspapers across multiple
+European languages, with participating systems relying primarily on fine-tuned
+transformer models such as BERT and its multilingual and domain-specific
+variants.
+
+\paragraph{Relation Extraction.}
+Relation extraction (RE) has a long history in NLP, from early pattern-based
+and kernel methods to neural sequence labeling and graph-based approaches.
+Most modern RE systems are trained on annotated datasets such as ACE, TACRED,
+or DocRED. However, these resources cover contemporary English and do not
+transfer well to historical multilingual text with noisy OCR. Supervised
+cross-lingual RE has been explored using multilingual pre-trained models, but
+requires parallel or translated training data that is often unavailable for
+historical domains.
+
+\paragraph{LLM-based Information Extraction.}
+Recent work has demonstrated that large language models can perform
+competitive zero-shot and few-shot information extraction without fine-tuning.
+In-context learning with structured output formats (e.g., JSON) has been shown
+to be effective for named entity recognition, relation extraction, and event
+detection. Chain-of-thought prompting, which elicits explicit intermediate
+reasoning before a final answer, has been shown to improve performance on
+tasks requiring multi-step inference, and is particularly relevant for
+nuanced relation classification where evidence must be grounded in specific
+text spans.
+
+\paragraph{Multilingual LLMs.}
+The models we evaluate span different strategies for multilingual competence.
+Gemma-3 and Gemma-4 are general-purpose models with strong multilingual
+capabilities due to their large pre-training corpora. Mistral Small was
+optimized for efficiency across European languages. Aya-Expanse is explicitly
+designed as a multilingual instruction-following model, covering over 23
+languages including all three task languages, and has shown strong performance
+on cross-lingual benchmarks. Mixture-of-Experts (MoE) architectures, as used
+in Gemma-4, activate only a fraction of parameters per token, enabling large
+total parameter counts at lower inference cost --- making them attractive for
+long-context historical document processing.
+
+\paragraph{Positioning.}
+Our work contributes to the emerging line of research on LLM-based historical
+RE by (1)~comparing multiple open-weight models under a controlled experimental
+grid, (2)~investigating the effect of prompt language (English vs.\ native) in
+a multilingual historical setting, and (3)~analyzing the discrepancy between
+in-domain and out-of-domain generalization for MoE vs.\ dense models.
+
+% ---------------------------------------------------------------
+\section{Task Description}
+
+The HIPE 2026 relation qualification task takes as input a historical newspaper
+article with pre-annotated named entities (persons and locations linked to
+Wikidata where possible) and a set of candidate \textbf{person--place pairs}
+extracted from the article. For each pair, the system must assign labels for
+two relations:
+
+\begin{itemize}[noitemsep]
+  \item \textbf{\texttt{at}}: Does the article provide textual evidence that
+        the person was at the location at any point before publication?\\
+        Labels: \texttt{TRUE}, \texttt{PROBABLE}, \texttt{FALSE}.
+  \item \textbf{\texttt{isAt}}: Does the article support that the person's
+        location in the article's immediate temporal horizon (current, ongoing,
+        or very recent) is the given place?\\
+        Labels: \texttt{TRUE}, \texttt{FALSE}.
+\end{itemize}
+
+The two relations are constrained: if \texttt{at} is \texttt{FALSE} then
+\texttt{isAt} must also be \texttt{FALSE}; if \texttt{isAt} is \texttt{TRUE}
+then \texttt{at} must also be \texttt{TRUE}. The label \texttt{PROBABLE} is
+only valid for \texttt{at}.
+
+The evaluation metric is \textbf{global macro-recall}, averaged equally over
+both relations. A system predicting all pairs as \texttt{FALSE} achieves
+approximately \textbf{0.4167} macro-recall (the class-imbalance baseline),
+since \texttt{FALSE} is the dominant label for both relations. A secondary
+\textbf{binary evaluation} maps \texttt{PROBABLE} predictions for \texttt{at}
+to \texttt{TRUE}, simplifying the problem to binary classification.
+
+% ---------------------------------------------------------------
+\section{Data}
+
+The HIPE 2026 dataset is derived from the Impresso project, which digitized
+and annotated historical European newspapers. The data builds on the HIPE-2022
+v2.1 named entity-annotated corpus, covering multiple newspaper collections in
+German, English, and French spanning roughly 1780--1950. Named entity
+annotations include Wikidata entity identifiers for persons and locations.
+Person--place pairs were extracted from each article, pre-annotated by an LLM
+ensemble, and then manually reviewed and corrected.
+
+\subsection{Dataset Statistics}
+
+Table~\ref{tab:data} shows the number of articles and annotated person--place
+pairs per language and split used in our experiments.
+
+\begin{table}[h]
+\centering
+\caption{Dataset statistics (articles~/~annotated pairs).}
+\label{tab:data}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Split} & \textbf{German} & \textbf{English} & \textbf{French} & \textbf{Total} \\
+\midrule
+Train          & 88~/~1{,}224   & 56~/~496         & 317~/~4{,}450   & 461~/~6{,}170  \\
+Dev            & 32~/~432       & 17~/~151         & 107~/~1{,}498   & 156~/~2{,}081  \\
+Test (impresso)& 19~/~238       & 19~/~162         & 19~/~238        & 57~/~638       \\
+Test (surprise-FR) & ---        & ---              & 30~/~480        & 30~/~480       \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The \textbf{surprise test set} is drawn from a different corpus (French
+literary works) not revealed before submission, designed to test
+out-of-domain generalization. The label distribution is heavily skewed toward
+\texttt{FALSE} for both relations, reflecting that most person--place pairs in
+a given article have no meaningful spatial relationship.
+
+\subsection{Data Characteristics}
+
+Key challenges include: (1)~OCR noise from historical digitization, including
+hyphenation artifacts, spelling variants, and line-break insertions within
+tokens; (2)~archaic and historical spelling, particularly in German and older
+French; (3)~long documents containing many persons and places, requiring the
+model to scope its attention to the specific pair; and (4)~ambiguous entity
+mentions appearing in different surface forms across the same article.
+
+% ---------------------------------------------------------------
+\section{Approach}
+
+\subsection{Overview}
+
+We frame the task as a \textbf{per-pair text classification} problem addressed
+via zero/few-shot prompting of large language models, with no task-specific
+fine-tuning. Each person--place pair is classified independently: the model
+receives the full article text and the two entity mention strings, and outputs
+a structured prediction.
+
+\subsection{Prompt Design}
+
+Prompts instruct the model to act as a historian reading a historical European
+newspaper article. Each prompt contains six components:
+
+\begin{enumerate}[noitemsep]
+  \item \textbf{System role}: ``You are a historian working on person-location
+        relations in multilingual historical European newspapers.''
+  \item \textbf{Relation definitions}: explicit temporal scope and label
+        constraints for \texttt{at} and \texttt{isAt}.
+  \item \textbf{Decision guidance}: rules specifying when each label applies
+        (e.g., \texttt{PROBABLE} only for indirect or partial evidence;
+        \texttt{isAt} is never \texttt{PROBABLE}; logical constraints between
+        the two relations).
+  \item \textbf{Robustness rules}: explicit instructions to handle OCR noise,
+        line-break artifacts, and historical spelling without external knowledge.
+  \item \textbf{Chain-of-thought format}: the model first outputs a brief
+        explanation for each relation (\texttt{at\_explanation},
+        \texttt{isAt\_explanation}, at most 100 words each, citing only
+        article evidence) before giving the label.
+  \item \textbf{Structured JSON output}: the final answer is a JSON object
+        with keys \texttt{at\_explanation}, \texttt{at},
+        \texttt{isAt\_explanation}, \texttt{isAt}.
+\end{enumerate}
+
+The chain-of-thought explanation encourages the model to ground decisions in
+the article text and provides interpretable traces for error analysis.
+Prompts were prepared in \textbf{English} and in the \textbf{native document
+language} (German, French). We hypothesized that native-language prompts might
+benefit models less robustly trained on historical German.
+
+\subsection{Few-Shot Examples}
+
+We experimented with 0, 3, 5, and 10 in-context examples per prompt.
+Examples were sampled from the training set to cover a mix of \texttt{TRUE},
+\texttt{PROBABLE}, and \texttt{FALSE} labels, avoiding label bias. Each
+example includes the full JSON output with explanations. At 10-shot, prompts
+reach several thousand tokens; we verified that all models supported the
+required context lengths.
+
+\subsection{Models}
+
+We evaluated four open-weight instruction-tuned models, all loaded via
+HuggingFace Transformers in bfloat16 precision on NVIDIA A100-SXM4-80GB GPUs.
+Table~\ref{tab:models} summarizes the models.
+
+\begin{table}[h]
+\centering
+\caption{Models evaluated.}
+\label{tab:models}
+\begin{tabular}{llrl}
+\toprule
+\textbf{Model key} & \textbf{HuggingFace ID} & \textbf{Params} & \textbf{Architecture} \\
+\midrule
+gemma4   & google/gemma-4-26B-A4B-it                  & 26B (4B active) & MoE   \\
+gemma3   & google/gemma-3-27b-it                      & 27B             & Dense \\
+mistral  & mistralai/Mistral-Small-24B-Instruct-2501  & 24B             & Dense \\
+aya      & CohereForAI/aya-expanse-32b                & 32B             & Dense, multilingual \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Gemma-4 is a Mixture-of-Experts model activating only 4B parameters per
+forward pass despite its 26B total, making it computationally efficient.
+Aya-Expanse is purpose-built for multilingual tasks and natively covers all
+three task languages.
+
+\subsection{Configuration Selection and Submission Strategy}
+
+For each model $\times$ prompt language $\times$ shot count combination, we
+ran inference on the development set and computed global macro-recall. We
+selected the best configuration per model per language and submitted the top-3
+models as run1/run2/run3, yielding 12 submission files (3~runs $\times$
+4~test files). Table~\ref{tab:submissions} shows the final configurations.
+
+\begin{table}[h]
+\centering
+\caption{Submitted configurations per test file.}
+\label{tab:submissions}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{llll}
+\toprule
+\textbf{Test file} & \textbf{run1} & \textbf{run2} & \textbf{run3} \\
+\midrule
+impresso-test-de   & gemma4 / en / 3-shot   & mistral / native / 0-shot & gemma3 / native / 0-shot \\
+impresso-test-en   & gemma4 / en / 5-shot   & gemma3 / en / 0-shot      & mistral / native / 0-shot \\
+impresso-test-fr   & gemma4 / en / 3-shot   & gemma3 / en / 0-shot      & mistral / native / 0-shot \\
+surprise-test-fr   & gemma4 / en / 3-shot   & gemma3 / en / 0-shot      & mistral / native / 0-shot \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ---------------------------------------------------------------
+\section{Results}
+
+\subsection{Development Set Results}
+
+Table~\ref{tab:dev} reports the best development set macro-recall per model
+across all configurations. Gemma-4 consistently achieves the highest scores,
+with 10-shot English prompts performing best across all three languages.
+
+\begin{table}[h]
+\centering
+\caption{Best development set results (global macro-recall). All-FALSE baseline: $\approx$0.4167.}
+\label{tab:dev}
+\begin{tabular}{lrrrp{4cm}}
+\toprule
+\textbf{Model} & \textbf{DE} & \textbf{EN} & \textbf{FR} & \textbf{Best config} \\
+\midrule
+gemma-4-26B (MoE)  & \textbf{0.7518} & \textbf{0.7803} & \textbf{0.7481} & en / 10-shot \\
+gemma-3-27b        & 0.5622 & 0.7209 & 0.6611 & native/0-shot (DE); en/0-shot (EN, FR) \\
+Mistral-Small-24B  & 0.5917 & 0.5935 & 0.5914 & native / 0-shot \\
+aya-expanse-32b    & 0.5950 & 0.5967 & 0.6183 & en / 0-shot \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All models substantially exceed the all-FALSE baseline. Gemma-4 shows a
+particularly large margin for English (+0.36) and French (+0.33). Native-
+language prompting generally benefits Mistral on German and Gemma-3 slightly
+on German, while English prompts perform best for French and English across
+all models.
+
+\subsection{Effect of Shot Count}
+
+Increasing in-context examples generally improved Gemma-4 up to 10~shots
+(e.g., $+$0.12 macro-recall for DE from 0-shot to 10-shot). For Gemma-3 and
+Mistral, few-shot examples were inconsistent and sometimes degraded
+performance, possibly due to prompt length effects or reduced attention to the
+test article. We therefore submitted zero-shot configurations for these models.
+
+\subsection{Official Test Results}
+
+Tables~\ref{tab:test-main} and~\ref{tab:test-binary} report official test
+results from the HIPE 2026 evaluation. Rankings are shown as rank~/~total
+submissions (46--47 impresso, 44 surprise submissions).
+
+\begin{table}[h]
+\centering
+\caption{Main evaluation --- impresso profile score (macro-recall). Format: rank/total --- score.}
+\label{tab:test-main}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Profile} & \textbf{run1 (gemma4)} & \textbf{run2 (gemma3)} & \textbf{run3 (mistral)} \\
+\midrule
+Overall (mean DE/EN/FR) & 41/46 --- 0.4429 & \textbf{20/46 --- 0.5781} & 24/46 --- 0.5390 \\
+German                  & 37/46 --- 0.4495 & 31/46 --- 0.5050          & \textbf{20/46 --- 0.5451} \\
+English                 & 36/47 --- 0.4583 & \textbf{19/47 --- 0.5762} & 28/47 --- 0.5101 \\
+French                  & 42/46 --- 0.4208 & \textbf{9/46 --- 0.6529}  & 23/46 --- 0.5617 \\
+Surprise-FR             & \textbf{6/46 --- 0.6837}  & 22/46 --- 0.5265 & 17/46 --- 0.6000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Binary evaluation (\texttt{PROBABLE} ``at'' $\to$ \texttt{TRUE}). Format: rank/total --- score.}
+\label{tab:test-binary}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Profile} & \textbf{run1 (gemma4)} & \textbf{run2 (gemma3)} & \textbf{run3 (mistral)} \\
+\midrule
+Overall (mean DE/EN/FR) & 41/46 --- 0.5252 & \textbf{20/46 --- 0.6721} & 24/46 --- 0.6274 \\
+German                  & 40/46 --- 0.5329 & 24/46 --- 0.6231          & \textbf{23/46 --- 0.6381} \\
+English                 & 36/47 --- 0.5382 & \textbf{21/47 --- 0.6524} & 28/47 --- 0.5904 \\
+French                  & 42/46 --- 0.5044 & \textbf{14/46 --- 0.7409} & 23/46 --- 0.6538 \\
+Surprise-FR             & \textbf{3/44 --- 0.8804}  & 26/44 --- 0.6473 & 20/44 --- 0.7262 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The per-relation breakdown for our best run (run2, French impresso) is:
+\texttt{at} macro-recall 0.5703 (binary: 0.7462), \texttt{isAt} macro-recall
+0.7356, \texttt{at} accuracy 0.6387 (binary: 0.7227), \texttt{isAt} accuracy
+0.7773.
+
+% ---------------------------------------------------------------
+\section{Analysis and Discussion}
+
+\subsection{Gemma-3 as the Most Reliable System}
+
+Gemma-3 (run2) is our strongest overall submission, ranking 20/46 and
+achieving the best individual result among our runs (French, rank~9/46). Its
+consistent zero-shot English performance across all three languages makes it a
+strong approach for multilingual historical RE. The strong French result may
+partly reflect the larger French training set (317 articles, 4,450 pairs),
+which provides richer in-domain calibration data for selecting examples and
+verifying predictions at development time.
+
+\subsection{The Gemma-4 Anomaly}
+
+The most striking finding is the divergence between Gemma-4's development and
+test performance. On the dev set it was the clear winner (0.75--0.78
+macro-recall), yet on the impresso test sets it ranked last among our runs
+(41/46 overall). Conversely, on the surprise French test it ranked 6/46 main
+and 3/44 binary --- best among all three of our submissions for that set.
+
+Several hypotheses may explain this divergence:
+
+\begin{enumerate}[noitemsep]
+  \item \textbf{Dev/test domain shift within impresso}: the dev and test splits
+        may differ in newspaper titles or time periods, and Gemma-4 may have
+        overfit to dev-set idiosyncrasies rather than generalizable patterns.
+  \item \textbf{\texttt{PROBABLE} label calibration}: Gemma-4 may predict
+        \texttt{PROBABLE} more frequently, which benefits macro-recall on the
+        dev set but backfires if the test distribution is less ambiguous. The
+        binary evaluation, which maps \texttt{PROBABLE}~$\to$~\texttt{TRUE},
+        shows a milder drop for Gemma-4 (0.52 vs.\ 0.44 in main), consistent
+        with this.
+  \item \textbf{Few-shot example bias}: the 3/5-shot examples used for impresso
+        test submissions may have introduced distribution shifts absent from
+        the dev set.
+  \item \textbf{Surprise set characteristics}: the literary works corpus may be
+        stylistically closer to Gemma-4's training distribution, explaining
+        its strong out-of-domain generalization.
+\end{enumerate}
+
+\subsection{Prompt Language Effects}
+
+Native-language prompting helped Mistral most on German (0.5917 native
+vs.\ 0.5389 en, 0-shot), consistent with Mistral Small's training being less
+robust on historical German text. For French, native prompts did not help any
+model meaningfully, likely because English and French are both well-represented
+in all model pretraining corpora. For Gemma-3, native prompts provided a
+modest benefit on German (0.5622 native vs.\ 0.5299 en).
+
+\subsection{Few-Shot Scaling}
+
+Few-shot examples improved Gemma-4 substantially but were inconsistent for
+Gemma-3 and Mistral. This may reflect differences in instruction-following
+capacity: Gemma-4's larger capacity allows it to integrate more examples
+effectively, while smaller models may lose focus on the target article as
+prompt length grows. Retrieval-augmented example selection (e.g., choosing
+examples similar in article topic or entity type to the target pair) could
+address this.
+
+\subsection{Progress Beyond Baseline}
+
+All submitted runs exceed the all-FALSE baseline ($\approx$0.4167). Run2
+achieves 0.5781 overall (main) and 0.6721 (binary), gains of $+$0.16 and
+$+$0.26 respectively. The French result (0.6529, rank~9/46) represents a gain
+of $+$0.24, and the surprise-FR binary result (0.8804, rank~3/44) a gain of
+$+$0.46. These results demonstrate that zero/few-shot LLM prompting is a
+strong approach for this task even without any fine-tuning.
+
+% ---------------------------------------------------------------
+\section{Perspectives for Future Work}
+
+\textbf{Fine-tuned smaller models.}
+The strong zero-shot performance of 24--27B models motivates exploring whether
+a smaller model (7B--13B) fine-tuned on the HIPE 2026 training set could match
+this performance at lower inference cost.
+
+\textbf{Retrieval-augmented few-shot.}
+Rather than fixed in-context examples, selecting examples by similarity to the
+target pair (article topic, entity type, time period) could improve few-shot
+performance across all models.
+
+\textbf{Constrained decoding.}
+The logical constraints between \texttt{at} and \texttt{isAt} could be
+enforced via constrained decoding or post-processing, rather than relying on
+the model to satisfy them through prompting alone.
+
+\textbf{Cross-lingual transfer.}
+The French training set is roughly $6\times$ larger than German and $9\times$
+larger than English. Systematic cross-lingual transfer experiments (training
+on French, evaluating on German/English) could address the data imbalance and
+improve low-resource language performance.
+
+\textbf{Analysis of the Gemma-4 gap.}
+A detailed comparison of Gemma-4 predictions on dev vs.\ test --- examining
+label distributions, entity types, and article domains --- would clarify
+whether the dev/test discrepancy is driven by calibration, domain mismatch,
+or few-shot example selection.
+
+% ---------------------------------------------------------------
+% References will be added here
+% \bibliographystyle{plain}
+% \bibliography{references}
+
+\end{document}
