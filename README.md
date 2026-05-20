@@ -96,7 +96,7 @@ Submission files and email: [`BIU_NLP_prediction/submission/`](BIU_NLP_predictio
 
 ---
 
-## Official Results (HIPE 2026, Preliminary)
+## Official Results (HIPE 2026, Final — team10 = BIU_NLP, Bar-Ilan University)
 
 17 teams, 46–47 submissions per language. Ranks shown as **rank / total**.
 

@@ -48,9 +48,9 @@ Submitted files are in [`submission/`](submission/).
 
 ---
 
-## Official Results (HIPE 2026, preliminary)
+## Official Results (HIPE 2026, Final — team10 = BIU_NLP, Bar-Ilan University)
 
-17 teams participated. Results from the [official evaluation repository](https://github.com/hipe-eval/hipe-2026-eval).  
+17 teams participated. Results from the [official evaluation repository](https://github.com/hipe-eval/hipe-2026-eval) (final de-anonymized release, 2026-05-20).  
 Ranks shown as **rank / total submissions** in that category.
 
 ### Main Evaluation
@@ -62,7 +62,7 @@ Ranks shown as **rank / total submissions** in that category.
 | English | 36/47 — 0.4583 | **19/47 — 0.5762** | 28/47 — 0.5101 |
 | French  | 42/46 — 0.4208 | **9/46 — 0.6529**  | 23/46 — 0.5617 |
 | Surprise-FR (generalization) | **6/46 — 0.6837** | 22/46 — 0.5265 | 17/46 — 0.6000 |
-| Efficiency overall | 33/33 — 0.4429 | **31/33 — 0.5781** | 31/33 — 0.5390 |
+| Efficiency overall | 32/32 — 0.4429 | **30/32 — 0.5781** | 30/32 — 0.5390 |
 
 ### Binary Evaluation (PROBABLE "at" → TRUE)
 
